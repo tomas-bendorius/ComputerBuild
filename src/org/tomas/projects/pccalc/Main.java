@@ -16,7 +16,7 @@ public class Main {
 		
 		DataLoader dataLoader = new DataLoader();
 		
-		PCComponentsData data =  dataLoader.loadData();
+		PCComponentsData data = dataLoader.loadData();
 		
 		PCGenerator generator = new PCGeneratorImpl();
 		

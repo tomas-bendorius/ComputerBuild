@@ -4,15 +4,13 @@ import org.tomas.projects.pccalc.model.enums.PriceLevel;
 
 public abstract class AbstractPCComponent {
 
-	private String name;
+	protected String name;
 
-	private PriceLevel priceLevel;
+	protected PriceLevel priceLevel;
 
-	private double price;
-	
-	private boolean basic;
+	protected double price;
 
-	
+	protected boolean basic;
 
 	public boolean isBasic() {
 		return basic;
@@ -45,5 +43,5 @@ public abstract class AbstractPCComponent {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 }

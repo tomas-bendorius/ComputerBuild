@@ -11,7 +11,10 @@ public class PCGeneratorImpl implements PCGenerator {
 
 	@Override
 	public List<PC> generateOptions(PCComponentsData data, PriceLevel level, CPUSocket socket) {
-		// TODO Auto-generated method stub
+		
+		data.getComponent();
+
+		
 		return null;
 	}
 

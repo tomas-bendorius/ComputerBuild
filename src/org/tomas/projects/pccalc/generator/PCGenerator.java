@@ -11,4 +11,7 @@ public interface PCGenerator {
 
 	List<PC> generateOptions(PCComponentsData data, PriceLevel level, CPUSocket socket);
 
+	
+	
+	
 }

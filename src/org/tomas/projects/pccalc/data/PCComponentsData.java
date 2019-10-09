@@ -3,31 +3,24 @@ package org.tomas.projects.pccalc.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.tomas.projects.pccalc.model.AbstractPCComponent;
 import org.tomas.projects.pccalc.model.CPU;
 import org.tomas.projects.pccalc.model.MotherBoard;
+import org.tomas.projects.pccalc.model.RAM;
 
 public class PCComponentsData {
 
-	private List<MotherBoard> mblist = new ArrayList<>();
+	private List<AbstractPCComponent> component = new ArrayList<>();
 
-	private List<CPU> cpulist = new ArrayList<>();
-
-	public PCComponentsData(List<MotherBoard> mblist, List<CPU> cpulist) {
+	public PCComponentsData(List<? extends AbstractPCComponent>... component) {
 		super();
-		this.mblist = mblist;
-		this.cpulist = cpulist;
+		for (List<? extends AbstractPCComponent> list : component) {
+			this.component.addAll(list);
+		}
 	}
 
-	public PCComponentsData() {
-
-	}
-
-	public List<MotherBoard> getMblist() {
-		return mblist;
-	}
-
-	public List<CPU> getCpulist() {
-		return cpulist;
+	public List<AbstractPCComponent> getComponent() {
+		return component;
 	}
 
 }
