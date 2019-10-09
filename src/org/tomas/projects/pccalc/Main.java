@@ -6,6 +6,7 @@ import org.tomas.projects.pccalc.data.DataLoader;
 import org.tomas.projects.pccalc.data.PCComponentsData;
 import org.tomas.projects.pccalc.generator.PCGenerator;
 import org.tomas.projects.pccalc.generator.PCGeneratorImpl;
+import org.tomas.projects.pccalc.model.GeneratorResult;
 import org.tomas.projects.pccalc.model.PC;
 import org.tomas.projects.pccalc.model.enums.CPUSocket;
 import org.tomas.projects.pccalc.model.enums.PriceLevel;
@@ -20,11 +21,11 @@ public class Main {
 		
 		PCGenerator generator = new PCGeneratorImpl();
 		
-		List<PC>result = generator.generateOptions(data, PriceLevel.Budget, CPUSocket.Socket1);
+		GeneratorResult result = generator.generateOptions(data, PriceLevel.Budget, CPUSocket.Socket1);
 		
-		for (PC pc : result) {
-			System.out.println(pc);
-		}
+//		for (PC pc : result) {
+//			System.out.println(pc);
+//		}
 		
 	}
 }
