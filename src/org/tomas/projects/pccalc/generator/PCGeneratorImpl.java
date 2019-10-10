@@ -1,6 +1,7 @@
 package org.tomas.projects.pccalc.generator;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,34 +26,45 @@ public class PCGeneratorImpl implements PCGenerator {
 		comp = filterOnlyBase(comp);
 
 		Map<String, List<AbstractPCComponent>> baseByType = filterBaseByType(comp);
-		
-		if (generatedCount(baseByType)>MAX_GENCOUNT) {
-			//
-		}
 
-		return generate(baseByType);
+		long limit = generatedCount(baseByType);
+		if (limit > MAX_GENCOUNT) {
+			return new GeneratorResult( MAX_GENCOUNT, limit, true);
+		}
+		
+		return new GeneratorResult(generate(baseByType), MAX_GENCOUNT, limit, false);
 	}
 
-	private GeneratorResult generate(Map<String, List<AbstractPCComponent>> baseByType) {
-		// TODO Auto-generated method stub
+	private List<PC> generate(Map<String, List<AbstractPCComponent>> baseByType) {
+		
+		
+		
+		
+		
 		return null;
 	}
 
-	private int generatedCount(Map<String, List<AbstractPCComponent>> baseByType) {
-		// TODO Auto-generated method stub
-		return 0;
+	private long generatedCount(Map<String, List<AbstractPCComponent>> baseByType) {
+
+		Collection<List<AbstractPCComponent>> componentCountList = baseByType.values();
+
+		long countresult = 1;
+		for (List<AbstractPCComponent> list : componentCountList) {
+			countresult = countresult * list.size();
+		}
+
+		return countresult;
 	}
 
-	
 	private Map<String, List<AbstractPCComponent>> filterBaseByType(List<AbstractPCComponent> comp) {
 
 		Map<String, List<AbstractPCComponent>> result = new HashMap<>();
 
 		String key = null;
-		
+
 		for (AbstractPCComponent c : comp) {
 			key = c.getClass().getSimpleName();
-			
+
 			if (!result.containsKey(key)) {
 				result.put(key, new ArrayList<AbstractPCComponent>());
 			}
