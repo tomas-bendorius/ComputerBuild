@@ -29,18 +29,31 @@ public class PCGeneratorImpl implements PCGenerator {
 
 		long limit = generatedCount(baseByType);
 		if (limit > MAX_GENCOUNT) {
-			return new GeneratorResult( MAX_GENCOUNT, limit, true);
+			return new GeneratorResult(MAX_GENCOUNT, limit, true);
 		}
-		
+
 		return new GeneratorResult(generate(baseByType), MAX_GENCOUNT, limit, false);
 	}
 
 	private List<PC> generate(Map<String, List<AbstractPCComponent>> baseByType) {
 		
+		List<AbstractPCComponent> list = baseByType.remove(baseByType.keySet().iterator().next());
+		
+		List<PC> pcs = new ArrayList<>();
+		for (String key : baseByType.keySet()) {
+			
+			for (AbstractPCComponent l : list) {
+				
+				
+				
+				pcs.add(new PC());
+			}
+			
+		}
 		
 		
-		
-		
+		//todo
+
 		return null;
 	}
 
