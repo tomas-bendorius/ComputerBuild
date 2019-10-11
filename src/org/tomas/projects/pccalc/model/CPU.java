@@ -23,4 +23,8 @@ public class CPU extends AbstractPCComponent {
 		this.socket = socket;
 	}
 
+	@Override
+	public boolean isBasic() {
+		return true;
+	}
 }

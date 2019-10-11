@@ -10,15 +10,14 @@ public class MotherBoard extends AbstractPCComponent {
 
 	private RAMType ramType;
 
-	public MotherBoard(String name, PriceLevel priceLevel, double price, boolean basic, CPUSocket socket,
-			RAMType ramType) {
+	public MotherBoard(String name, PriceLevel priceLevel, double price, CPUSocket socket, RAMType ramType) {
 		super();
 		this.socket = socket;
 		this.ramType = ramType;
 		this.name = name;
 		this.priceLevel = priceLevel;
 		this.price = price;
-		this.basic = basic;
+
 	}
 
 	public CPUSocket getSocket() {
@@ -35,6 +34,11 @@ public class MotherBoard extends AbstractPCComponent {
 
 	public void setRamType(RAMType ramType) {
 		this.ramType = ramType;
+	}
+
+	@Override
+	public boolean isBasic() {
+		return true;
 	}
 
 }

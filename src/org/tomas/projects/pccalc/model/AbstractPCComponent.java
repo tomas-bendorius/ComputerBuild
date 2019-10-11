@@ -9,16 +9,10 @@ public abstract class AbstractPCComponent {
 	protected PriceLevel priceLevel;
 
 	protected double price;
+	
+	protected double powerConsumption;
 
-	protected boolean basic;
-
-	public boolean isBasic() {
-		return basic;
-	}
-
-	public void setBasic(boolean basic) {
-		this.basic = basic;
-	}
+	public abstract boolean isBasic();
 
 	public String getName() {
 		return name;
@@ -42,6 +36,20 @@ public abstract class AbstractPCComponent {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+
+	public void setPowerConsumption(double powerConsumption) {
+		this.powerConsumption = powerConsumption;
+	}
+
+	public double getPowerConsumption() {
+		return powerConsumption;
+	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + " [name=" + name + "]";
 	}
 
 }

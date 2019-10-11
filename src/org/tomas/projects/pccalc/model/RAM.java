@@ -24,4 +24,8 @@ public class RAM extends AbstractPCComponent {
 		this.type = type;
 	}
 
+	@Override
+	public boolean isBasic() {
+		return true;
+	}
 }

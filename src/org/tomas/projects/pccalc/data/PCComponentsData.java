@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.tomas.projects.pccalc.model.AbstractPCComponent;
-import org.tomas.projects.pccalc.model.CPU;
-import org.tomas.projects.pccalc.model.MotherBoard;
-import org.tomas.projects.pccalc.model.RAM;
 
 public class PCComponentsData {
 

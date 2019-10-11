@@ -1,4 +1,4 @@
- package org.tomas.projects.pccalc.data;
+package org.tomas.projects.pccalc.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,19 +16,20 @@ public class DataLoader {
 	public PCComponentsData loadData() {
 
 		List<MotherBoard> mblist = new ArrayList<>();
-		mblist.add(new MotherBoard("gigabyte", PriceLevel.Budget, 99.99, true, CPUSocket.Socket1, RAMType.DDR3));
+		mblist.add(new MotherBoard("gigabyte", PriceLevel.Budget, 99.99, CPUSocket.Socket2, RAMType.DDR3));
+		mblist.add(new MotherBoard("asus    ", PriceLevel.Budget, 99.99, CPUSocket.Socket1, RAMType.DDR4));
 
 		List<CPU> cpulist = new ArrayList<>();
-		cpulist.add(new CPU("intel", PriceLevel.Budget, 550, CPUSocket.Socket1));
-		cpulist.add(new CPU("asus", PriceLevel.Economic, 950, CPUSocket.Socket2));
-		cpulist.add(new CPU("amd", PriceLevel.Midrange, 1200, CPUSocket.Socket1));
-		cpulist.add(new CPU("intel", PriceLevel.Highlevel, 1400, CPUSocket.Socket2));
+		cpulist.add(new CPU("i3    ", PriceLevel.Budget, 550, CPUSocket.Socket1));
+		cpulist.add(new CPU("i5    ", PriceLevel.Budget, 950, CPUSocket.Socket1));
+		cpulist.add(new CPU("Ryzen2", PriceLevel.Budget, 1200, CPUSocket.Socket2));
+		cpulist.add(new CPU("Ryzen1", PriceLevel.Budget, 1400, CPUSocket.Socket2));
 
 		List<RAM> ramlist = new ArrayList<>();
-		ramlist.add(new RAM("lenovo", PriceLevel.Extremeperformace, 350, RAMType.DDR4));
-		ramlist.add(new RAM("kingston", PriceLevel.Economic, 50, RAMType.DDR2));
-		ramlist.add(new RAM("hp", PriceLevel.Midrange, 150, RAMType.DDR3));
-		ramlist.add(new RAM("dell", PriceLevel.Highlevel, 200, RAMType.DDR2));
+		ramlist.add(new RAM("lenovo  ", PriceLevel.Budget, 350, RAMType.DDR4));
+		ramlist.add(new RAM("kingston", PriceLevel.Budget, 50, RAMType.DDR2));
+		ramlist.add(new RAM("hp      ", PriceLevel.Budget, 150, RAMType.DDR3));
+		ramlist.add(new RAM("dell    ", PriceLevel.Budget, 200, RAMType.DDR2));
 
 		List<AbstractPCComponent> kita = new ArrayList<>();
 		kita.add(new AbstractPCComponent() {

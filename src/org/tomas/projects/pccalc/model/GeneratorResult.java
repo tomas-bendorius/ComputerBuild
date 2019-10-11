@@ -8,8 +8,6 @@ public class GeneratorResult {
 	private long maxcount;
 	private long count;
 	private boolean limitexceded;
-	
-	
 
 	public GeneratorResult(List<PC> pcs, long maxcount, long count, boolean limitexceded) {
 		super();

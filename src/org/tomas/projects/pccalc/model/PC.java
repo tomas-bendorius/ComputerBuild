@@ -6,19 +6,28 @@ import java.util.List;
 
 public class PC {
 
-	private List<AbstractPCComponent>components = new ArrayList<>();
+	private List<AbstractPCComponent> components = new ArrayList<>();
 
-	public PC(AbstractPCComponent ... components) {
+	public PC(AbstractPCComponent... components) {
+		this.components.addAll(Arrays.asList(components));
+	}
 
-		this.components = Arrays.asList(components);
+	public PC(List<AbstractPCComponent> components) {
+		this.components.addAll(components);
 	}
 
 	public List<AbstractPCComponent> getComponents() {
 		return components;
 	}
-	
-	
-	
-	
-	//TODO to string
+
+	public void addComponent(AbstractPCComponent c) {
+		components.add(c);
+	}
+
+	@Override
+	public String toString() {
+		return "PC [components=" + components + "]";
+	}
+
+	// TODO to string
 }

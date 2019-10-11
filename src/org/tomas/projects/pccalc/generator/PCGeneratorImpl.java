@@ -10,51 +10,97 @@ import org.tomas.projects.pccalc.data.PCComponentsData;
 import org.tomas.projects.pccalc.model.AbstractPCComponent;
 import org.tomas.projects.pccalc.model.GeneratorResult;
 import org.tomas.projects.pccalc.model.PC;
-import org.tomas.projects.pccalc.model.enums.CPUSocket;
-import org.tomas.projects.pccalc.model.enums.PriceLevel;
 
-public class PCGeneratorImpl implements PCGenerator {
+public class PCGeneratorImpl {
 
-	private static final int MAX_GENCOUNT = 20;
+	private static final int MAX_GENCOUNT = 1000000;
 
-	@Override
-	public GeneratorResult generateOptions(PCComponentsData data, PriceLevel level, CPUSocket socket) {
+
+	public GeneratorResult generateOptions(PCComponentsData data, GeneratorFilter handler) {
 
 		List<AbstractPCComponent> comp = data.getComponent();
+		Map<String, List<AbstractPCComponent>> mapByType = mapByType( componentsFilterBefore(handler, comp));
 
-		comp = filterByPriceLevel(level, comp);
-		comp = filterOnlyBase(comp);
-
-		Map<String, List<AbstractPCComponent>> baseByType = filterBaseByType(comp);
-
-		long limit = generatedCount(baseByType);
+		long limit = generatedCount(mapByType);
 		if (limit > MAX_GENCOUNT) {
 			return new GeneratorResult(MAX_GENCOUNT, limit, true);
 		}
 
-		return new GeneratorResult(generate(baseByType), MAX_GENCOUNT, limit, false);
+		List<PC> pcs = generate(mapByType, handler);
+		List<PC> pcsFilterAfter = pcsFilterAfter(handler, pcs);
+
+		return new GeneratorResult(pcsFilterAfter, MAX_GENCOUNT, limit, false);
 	}
 
-	private List<PC> generate(Map<String, List<AbstractPCComponent>> baseByType) {
-		
-		List<AbstractPCComponent> list = baseByType.remove(baseByType.keySet().iterator().next());
-		
-		List<PC> pcs = new ArrayList<>();
-		for (String key : baseByType.keySet()) {
-			
-			for (AbstractPCComponent l : list) {
-				
-				
-				
-				pcs.add(new PC());
+	private List<PC> pcsFilterAfter(GeneratorFilter handler, List<PC> pcs) {
+		List<PC> pcsFilterAfter = new ArrayList<>();
+		for (PC pc : pcs) {
+			if (handler.filterAfter(pc)) {
+				pcsFilterAfter.add(pc);
 			}
-			
 		}
-		
-		
-		//todo
+		return pcsFilterAfter;
+	}
 
-		return null;
+	private List<AbstractPCComponent> componentsFilterBefore(GeneratorFilter handler, List<AbstractPCComponent> comp) {
+		List<AbstractPCComponent> compFilterBefore = new ArrayList<>();
+
+		for (AbstractPCComponent abstractPCComponent : comp) {
+			if (handler.filterBefore(abstractPCComponent)) {
+				compFilterBefore.add(abstractPCComponent);
+			}
+		}
+		return compFilterBefore;
+	}
+
+	private List<PC> generate(Map<String, List<AbstractPCComponent>> baseByType,GeneratorFilter handler) {
+
+		List<PC> pcs = new ArrayList<>();
+		List<PC> pcExts = new ArrayList<>();
+		List<AbstractPCComponent> list = baseByType.remove(baseByType.keySet().iterator().next());
+
+		for (AbstractPCComponent l : list) {
+			pcs.add(new PC(l));
+		}
+
+		for (String key : baseByType.keySet()) { // Map by components
+			pcExts = new ArrayList<>();
+
+			for (AbstractPCComponent l : baseByType.get(key)) { // Components
+
+				// filters here
+
+				// add copy with another combination
+				pcExts.addAll(createCombinationWithAnotherComponent(pcs, l, handler));
+			}
+
+			pcs = pcExts;
+		}
+		return pcs;
+	}
+
+	private List<PC> createCombinationWithAnotherComponent(List<PC> pcsOrig, AbstractPCComponent l, GeneratorFilter handler) {
+
+		List<PC> pcsNewComb = new ArrayList<>();
+
+		// copy
+		for (PC pc : pcsOrig) {
+			pcsNewComb.add(new PC(pc.getComponents()));
+		}
+
+		// add component
+		List<PC> incompatibleCombinations = new ArrayList<>();
+		for (PC pc : pcsNewComb) {
+			pc.addComponent(l);
+			
+			if(!handler.componentsCompatible(pc)) {
+				incompatibleCombinations.add(pc);
+			}
+		}
+		pcsNewComb.removeAll(incompatibleCombinations);
+		
+
+		return pcsNewComb;
 	}
 
 	private long generatedCount(Map<String, List<AbstractPCComponent>> baseByType) {
@@ -69,7 +115,7 @@ public class PCGeneratorImpl implements PCGenerator {
 		return countresult;
 	}
 
-	private Map<String, List<AbstractPCComponent>> filterBaseByType(List<AbstractPCComponent> comp) {
+	private Map<String, List<AbstractPCComponent>> mapByType(List<AbstractPCComponent> comp) {
 
 		Map<String, List<AbstractPCComponent>> result = new HashMap<>();
 
@@ -89,26 +135,6 @@ public class PCGeneratorImpl implements PCGenerator {
 		return result;
 	}
 
-	private List<AbstractPCComponent> filterOnlyBase(List<AbstractPCComponent> comp) {
-		List<AbstractPCComponent> result = new ArrayList<>();
-		for (AbstractPCComponent c : comp) {
-			if (c.isBasic()) {
-				result.add(c);
-			}
-		}
-
-		return result;
-	}
-
-	private List<AbstractPCComponent> filterByPriceLevel(PriceLevel level, List<AbstractPCComponent> comp) {
-		List<AbstractPCComponent> priceLevelComp = new ArrayList<>();
-		for (AbstractPCComponent c : comp) {
-			if (c.getPriceLevel().equals(level)) {
-				priceLevelComp.add(c);
-			}
-		}
-
-		return priceLevelComp;
-	}
+	
 
 }
