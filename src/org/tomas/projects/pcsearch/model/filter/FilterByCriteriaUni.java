@@ -17,17 +17,26 @@ public abstract class FilterByCriteriaUni<SEARCHTYPE> {
 			return result;
 		}
 
+		boolean doItFit = false;
 		for (PC pc : allpcs) {
+			
+			// separete components check
 			for (AbstractPCComponent ac : pc.getComponents()) {
 				if (pcComponentFilter(ac, searchCriteria)) {
-					result.add(pc);
-					break;
+					doItFit = true;
 				}
 			}
+			
+			// whole pc check
 			if (pcFilter(pc, searchCriteria)) {
-				result.add(pc);
-				break;
+				doItFit = true;
 			}
+			
+			// if ok... add to search result
+			if (doItFit) {
+				result.add(pc);
+			}
+			
 		}
 		return result;
 	}

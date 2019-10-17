@@ -14,6 +14,7 @@ import org.tomas.projects.pccalc.model.enums.DiskSize;
 import org.tomas.projects.pccalc.model.enums.PriceLevel;
 import org.tomas.projects.pccalc.model.enums.RAMType;
 import org.tomas.projects.pcsearch.model.filter.FilterByCompatibility;
+import org.tomas.projects.pcsearch.model.filter.FilterByHDD;
 
 
 public class Main {
@@ -69,8 +70,8 @@ public class Main {
 
 		System.out.println();
 
-		FilterByCompatibility filtras = new FilterByCompatibility();
-		List<PC> result = filtras.searchByCriteria(computers, false);
+		FilterByHDD filtras = new FilterByHDD();
+		List<PC> result = filtras.searchByCriteria(computers, true);
 
 		for (PC pc : result) {
 			System.out.println(pc);

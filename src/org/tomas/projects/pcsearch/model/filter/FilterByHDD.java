@@ -5,6 +5,8 @@ import org.tomas.projects.pccalc.model.Disk;
 import org.tomas.projects.pccalc.model.PC;
 
 public class FilterByHDD extends FilterByCriteriaUni<Boolean> {
+
+	private boolean diskFlag = false;
 	
 	@Override
 	protected Boolean beforeCheck(Boolean searchCriteria) {
@@ -18,17 +20,24 @@ public class FilterByHDD extends FilterByCriteriaUni<Boolean> {
 
 	@Override
 	public boolean pcComponentFilter(AbstractPCComponent pc, Boolean searchCriteria) {
-		if(pc instanceof Disk) {
-		return true;
-		
-	}
-	return false;
+
+		diskFlag = diskFlag || (pc instanceof Disk);
+		return false;
 	}
 
 	@Override
 	protected boolean pcFilter(PC pc, Boolean searchCriteria) {
 
-		return false;
+		//if (searchCriteria) {
+		
+		boolean result = diskFlag;
+		diskFlag = false;
+		
+			return result;
+		//}
+		
+		
+		//return !diskFlag;
 	}
 
 }
