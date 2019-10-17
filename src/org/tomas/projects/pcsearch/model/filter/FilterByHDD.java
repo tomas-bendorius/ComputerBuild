@@ -1,8 +1,8 @@
 package org.tomas.projects.pcsearch.model.filter;
 
-import org.tomas.projects.pcsearch.model.AbstractPCComponent;
-import org.tomas.projects.pcsearch.model.Disk;
-import org.tomas.projects.pcsearch.model.PC;
+import org.tomas.projects.pccalc.model.AbstractPCComponent;
+import org.tomas.projects.pccalc.model.Disk;
+import org.tomas.projects.pccalc.model.PC;
 
 public class FilterByHDD extends FilterByCriteriaUni<Boolean> {
 	

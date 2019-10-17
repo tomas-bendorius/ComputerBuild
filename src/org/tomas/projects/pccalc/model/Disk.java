@@ -1,7 +1,7 @@
-package org.tomas.projects.pcsearch.model;
+package org.tomas.projects.pccalc.model;
 
-import org.tomas.projects.pcsearch.model.enums.DiskSize;
-import org.tomas.projects.pcsearch.model.enums.PriceLevel;
+import org.tomas.projects.pccalc.model.enums.DiskSize;
+import org.tomas.projects.pccalc.model.enums.PriceLevel;
 
 public class Disk extends AbstractPCComponent {
 

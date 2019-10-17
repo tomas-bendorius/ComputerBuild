@@ -1,17 +1,18 @@
 package org.tomas.projects.pcsearch.search;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
-import org.tomas.projects.pcsearch.model.CPU;
-import org.tomas.projects.pcsearch.model.Disk;
-import org.tomas.projects.pcsearch.model.MotherBoard;
-import org.tomas.projects.pcsearch.model.PC;
-import org.tomas.projects.pcsearch.model.RAM;
-import org.tomas.projects.pcsearch.model.enums.CPUSocket;
-import org.tomas.projects.pcsearch.model.enums.DiskSize;
-import org.tomas.projects.pcsearch.model.enums.PriceLevel;
-import org.tomas.projects.pcsearch.model.enums.RAMType;
+import org.tomas.projects.pccalc.model.CPU;
+import org.tomas.projects.pccalc.model.Disk;
+import org.tomas.projects.pccalc.model.MotherBoard;
+import org.tomas.projects.pccalc.model.PC;
+import org.tomas.projects.pccalc.model.RAM;
+import org.tomas.projects.pccalc.model.enums.CPUSocket;
+import org.tomas.projects.pccalc.model.enums.DiskSize;
+import org.tomas.projects.pccalc.model.enums.PriceLevel;
+import org.tomas.projects.pccalc.model.enums.RAMType;
 import org.tomas.projects.pcsearch.model.filter.FilterByCompatibility;
 
 

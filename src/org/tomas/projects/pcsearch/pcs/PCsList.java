@@ -3,13 +3,13 @@ package org.tomas.projects.pcsearch.pcs;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.tomas.projects.pcsearch.model.AbstractPCComponent;
-import org.tomas.projects.pcsearch.model.CPU;
-import org.tomas.projects.pcsearch.model.MotherBoard;
-import org.tomas.projects.pcsearch.model.RAM;
-import org.tomas.projects.pcsearch.model.enums.CPUSocket;
-import org.tomas.projects.pcsearch.model.enums.PriceLevel;
-import org.tomas.projects.pcsearch.model.enums.RAMType;
+import org.tomas.projects.pccalc.model.AbstractPCComponent;
+import org.tomas.projects.pccalc.model.CPU;
+import org.tomas.projects.pccalc.model.MotherBoard;
+import org.tomas.projects.pccalc.model.RAM;
+import org.tomas.projects.pccalc.model.enums.CPUSocket;
+import org.tomas.projects.pccalc.model.enums.PriceLevel;
+import org.tomas.projects.pccalc.model.enums.RAMType;
 
 public class PCsList {
 

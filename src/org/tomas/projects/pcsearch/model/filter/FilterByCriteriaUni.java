@@ -3,11 +3,8 @@ package org.tomas.projects.pcsearch.model.filter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.tomas.projects.pcsearch.model.AbstractPCComponent;
-import org.tomas.projects.pcsearch.model.CPU;
-import org.tomas.projects.pcsearch.model.MotherBoard;
-import org.tomas.projects.pcsearch.model.PC;
-import org.tomas.projects.pcsearch.model.enums.CPUSocket;
+import org.tomas.projects.pccalc.model.AbstractPCComponent;
+import org.tomas.projects.pccalc.model.PC;
 
 public abstract class FilterByCriteriaUni<SEARCHTYPE> {
 

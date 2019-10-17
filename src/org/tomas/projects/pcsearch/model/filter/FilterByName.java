@@ -1,7 +1,7 @@
 package org.tomas.projects.pcsearch.model.filter;
 
-import org.tomas.projects.pcsearch.model.AbstractPCComponent;
-import org.tomas.projects.pcsearch.model.PC;
+import org.tomas.projects.pccalc.model.AbstractPCComponent;
+import org.tomas.projects.pccalc.model.PC;
 
 public class FilterByName extends FilterByCriteriaUni<String> {
 	
