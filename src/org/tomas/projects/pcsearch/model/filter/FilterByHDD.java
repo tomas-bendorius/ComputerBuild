@@ -40,4 +40,11 @@ public class FilterByHDD extends FilterByCriteriaUni<Boolean> {
 		//return !diskFlag;
 	}
 
+	@Override
+	protected boolean pcPriceLevelFilter(PC pc, Boolean searchCriteria) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 }

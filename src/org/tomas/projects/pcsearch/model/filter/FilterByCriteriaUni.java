@@ -20,7 +20,7 @@ public abstract class FilterByCriteriaUni<SEARCHTYPE> {
 		boolean doItFit = false;
 		for (PC pc : allpcs) {
 			
-			// separete components check
+			// separate components check
 			for (AbstractPCComponent ac : pc.getComponents()) {
 				if (pcComponentFilter(ac, searchCriteria)) {
 					doItFit = true;
@@ -48,6 +48,8 @@ public abstract class FilterByCriteriaUni<SEARCHTYPE> {
 	protected abstract boolean isCriteriaValid(SEARCHTYPE searchCriteria);
 
 	protected abstract boolean pcComponentFilter(AbstractPCComponent pc, SEARCHTYPE searchCriteria);
+
+	protected abstract boolean pcPriceLevelFilter(PC pc, SEARCHTYPE searchCriteria);
 	
 	
 }

@@ -76,4 +76,10 @@ public class FilterByCompatibility extends FilterByCriteriaUni<Boolean> {
 		return true;
 	}
 
+	@Override
+	protected boolean pcPriceLevelFilter(PC pc, Boolean searchCriteria) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

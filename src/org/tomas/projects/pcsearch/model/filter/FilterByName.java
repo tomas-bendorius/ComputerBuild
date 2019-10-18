@@ -25,4 +25,10 @@ public class FilterByName extends FilterByCriteriaUni<String> {
 		return false;
 	}
 
+	@Override
+	protected boolean pcPriceLevelFilter(PC pc, String searchCriteria) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
